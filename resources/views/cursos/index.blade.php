@@ -6,4 +6,8 @@
 
 @section('content')
     <h1>bienvenido a la pagina principal de cursos</h1>
-@endsection
+    <ul>
+        @foreach ($cursos as $curso)
+        <li>{{$curso}}</li>
+    </ul>
+    @endsection
