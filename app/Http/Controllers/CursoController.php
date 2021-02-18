@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\curso;
 
 class CursoController extends Controller
 {
     public function index(){
-        return view('cursos.index');
+
+        $cursos = curso::all();
+
+
+        return view('cursos.index', compact('cursos'));
 
     }
 
