@@ -21,12 +21,44 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function show($id){
+    public function store(Request $request){
 
-        $curso = curso::find($id);
+        $curso= new curso();
 
+        $curso->nombre = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
 
+        $curso->save();
+
+        return redirect()->route('cursos.show',$curso);
+
+    }
+
+    
+    public function show(curso $curso){
+        
         return view('cursos.show',compact('curso'));
+        
+    }
+
+
+    public function edit(curso $curso){
+
+        return view('cursos.edit',compact('curso'));
+    
+        
+    }
+
+    public function update(Request $request , curso $curso){
+
+        $curso->nombre = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+
+        return redirect()->route('cursos.show',$curso);
 
     }
 }
